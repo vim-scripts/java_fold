@@ -1,0 +1,10 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1309
+
+This script uses the expr fold-method to create folds for java source code.  Folds are created for methods, variables and nested classes with a javadoc comment (that is, at any line inside a class that starts with /**).  The fold will show a count of the number of lines contained in it and the first line of the variable or method declaration.
+
+The fold level for each fold is equal to the indentation divided by the value of the 'shiftwidth' option, so make sure that 'shiftwidth' is set to the right value for your code.
+
+Caveats:
+- this doesn't work if you don't indent your code (properly) or if you don't use javadoc comments
+- the folds are "greedy": they start at a javadoc comment and run upto the next javadoc comment (they don't pay attention to syntax)
+- you can't see the javadoc comments in the folds

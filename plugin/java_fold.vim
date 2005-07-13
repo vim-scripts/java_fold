@@ -1,8 +1,8 @@
 " Vim folding file
 " Language:	Java
-" Author:	Jorrit Wiersma
-" Last Change:	2005 Jun 21
-" Version:	1.0
+" Author:	Jorrit Wiersma, Robert Ames (line counts)
+" Last Change:	2005 Jul 13
+" Version:	1.1
 
 setlocal foldmethod=expr
 setlocal foldexpr=GetJavaFold(v:lnum)
@@ -16,7 +16,17 @@ function! JavaFoldText()
       let nnum = nextnonblank(nnum + 1)
       let nline = getline(nnum)
   endwhile
-  return nline
+  let size = 1 + v:foldend - v:foldstart
+  if size < 10
+    let size = " " . size
+  endif
+  if size < 100
+    let size = " " . size
+  endif
+  if size < 1000
+    let size = " " . size
+  endif
+  return size . " lines:" . nline
 endfunction
 
 
